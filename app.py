@@ -169,5 +169,11 @@ else:
                 <b>-Uzma Tarannum</b>
     </div>
     """, unsafe_allow_html=True)
+    st.download_button(
+        label="📥 Download Answers (Excel)",
+        data=open("responses.xlsx", "rb"),
+        file_name="responses.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
 
     st.balloons()
