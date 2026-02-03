@@ -10,6 +10,47 @@ st.set_page_config(
     page_icon="💍",
     layout="centered"
 )
+st.markdown("""
+<style>
+/* Hide Streamlit header layer that blocks clicks */
+[data-testid="stHeader"] {
+    display: none;
+}
+ 
+/* Ensure app container allows clicks */
+[data-testid="stAppViewContainer"] {
+    pointer-events: auto;
+}
+ 
+/* Position download button */
+[data-testid="stDownloadButton"] {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 99999;
+    pointer-events: auto;
+}
+ 
+/* Style the button */
+[data-testid="stDownloadButton"] button {
+    background-color: #c9184a !important;
+    color: white !important;
+    font-size: 11px !important;
+    padding: 6px 10px !important;
+    border-radius: 999px !important;
+    border: none !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+ 
+/* Remove white container */
+[data-testid="stDownloadButton"] > div {
+    background: transparent !important;
+    padding: 0 !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # ---------- Custom Pink Theme CSS ----------
 st.markdown("""
@@ -70,6 +111,7 @@ h3 {
 .stRadio > div {
     padding: 6px;
 }
+            
 </style>
 """, unsafe_allow_html=True)
 
@@ -159,21 +201,20 @@ if not st.session_state.submitted:
 
 # ---------- Final Screen ----------
 else:
-    st.markdown("<h2>💞 Thank You for Answering Honey💞</h2>", unsafe_allow_html=True)
-    st.markdown("""
-    <div class='footer'>
-    No matter what you chose…<br><br>
-    <b>You are my forever.</b><br><br>
-    I choose you , today, tomorrow, always. 💍❤️<br><br>
-    From your beloved wife<br><br>
-                <b>-Uzma Tarannum</b>
-    </div>
-    """, unsafe_allow_html=True)
     st.download_button(
-        label="📥 Download Answers",
+        label="⬇",
         data=open("responses.xlsx", "rb"),
         file_name="responses.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
     )
-
+ 
+    st.markdown("<h2>💞 Thank You for Answering Honey 💞</h2>", unsafe_allow_html=True)
+    st.markdown("""
+    <div class='footer'>
+        No matter what you chose…<br><br>
+        <b>You are my forever.</b><br><br>
+        I choose you — today, tomorrow, always. 💍❤️
+    </div>
+    """, unsafe_allow_html=True)
+ 
     st.balloons()
