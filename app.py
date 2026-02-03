@@ -170,7 +170,7 @@ else:
     </div>
     """, unsafe_allow_html=True)
     st.download_button(
-        label="📥 Download Answers (Excel)",
+        label="📥 Download Answers",
         data=open("responses.xlsx", "rb"),
         file_name="responses.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
